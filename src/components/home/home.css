@@ -1,0 +1,204 @@
+.caroContain{
+    height: 450px;
+    /* background-color: red; */
+    width: 100%;
+    margin-top: 30px;
+   
+    position: relative;
+}
+.homecontain{
+    user-select: none;
+}
+.carodivs{
+        position: absolute;
+        /* background-color: antiquewhite; */
+        margin-bottom: 3%;
+        width: 23.5%;
+        opacity: 0.0;
+        transform: scale(0);
+        
+}
+.caro1{
+    height: 30%;
+    animation: opa 0.3s 0s ease-in forwards;
+}
+.caro2{
+    left: 25.5%;
+    /* background-color: aqua; */
+    animation: opa 0.3s 0.15s ease-in forwards;
+    height: 60%;
+}
+.caro3{
+    left: 51%;
+    height: 50%;
+    animation: opa 0.3s 0.35s ease-in forwards;
+}
+.caro4{
+    left: 76.5%;
+    height: 37%;
+    animation: opa 0.3s 0.5s ease-in forwards;
+}
+
+.caro5{
+    top: 32%;
+    height: 68%;
+    animation: opa 0.3s 0.75s ease-in forwards;
+}
+.caro6{
+    left: 25.5%;
+    /* background-color: aqua; */
+    top: 62%;
+    animation: opa 0.3s 0.95s ease-in forwards;
+    height: 38%;
+}
+.caro7{
+    left: 51%;
+    top: 52%;
+    height: 48%;
+    animation: opa 0.3s 1.1s ease-in forwards;
+}
+.caro8{
+    left: 76.5%;
+    top: 39%;
+    height: 61%;
+    animation: opa 0.3s 1.4s ease-in forwards;
+}
+.caroimg{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+@keyframes opa {
+    100%{
+        opacity: 0.9;
+        transform: scale(1);
+    }
+}
+
+.gradi{
+    height: 300px;
+    width: 200px;
+    filter: blur(100px);
+    position: absolute;
+    transform: rotate(230deg);
+    background-image: linear-gradient(270.46deg, rgba(200, 82, 255, 0.49) 24.29%, rgba(85, 82, 255, 0.641667) 64.5%, rgba(200, 82, 255, 0.21) 99.62%);
+}
+.hmgr{
+    top: -100px;
+}
+
+.clgabtCon{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    margin-top: 55px;
+    margin-bottom: 40px;
+}
+.cg{
+    margin: 0px;
+}
+.abt{
+    width: 90%;
+    font-size: 20px;
+}
+
+.cegdetcon{
+    display: flex;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    /* background-color: aqua; */
+    height: 270px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.cegimgcon{
+    width: 40%;
+    height: 100%;
+}
+.cegimg{
+    width: 100%;
+    height: 100%;
+}
+.cegtxt{
+    /* background-color: aqua; */
+    width:40%;
+    line-height: 27.7px;
+    font-size: 17px;
+    color: #9AA4B2;
+}
+.rankcon{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 17px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.rnk{
+    background-color: #1e1f22;;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid rgb(4, 4, 64);
+    box-shadow: 0.2px 0.2px 0.6px;
+}
+
+.rnk:hover{
+    cursor: pointer;
+    box-shadow: 0.3px 0.3px 0.9px white;
+}
+.foo{
+    display: flex;
+    flex-direction: column;
+    background-color: #1b1c24;
+    justify-content: center;
+    align-items: center;
+    margin-left: -90px;
+    margin-right: -90px;
+    margin-bottom: -10px;
+}
+.svgs{
+    display: flex;
+    justify-content: space-between;
+}
+.sv{
+    height: 50px;
+    color: rgb(183, 181, 181);
+    margin-left: 20px;
+}
+.sv:hover{
+    cursor: pointer;
+    color: white;
+}
+
+
+@media screen and (max-width:708px) {
+
+    .cegdetcon{
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+    .cegimg{
+        width: 73vw;
+    }
+    .cegtxt{
+        margin-top: 20px;
+        width: 100%;
+    }
+    .rankcon{
+        flex-direction: column;
+    }
+    .abt{
+        width: 100%;
+    }
+}
+
+
