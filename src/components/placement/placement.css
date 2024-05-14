@@ -1,7 +1,6 @@
 .transCont{
     margin-top: 30px;
     margin-bottom: 30px;
-  
     height: 400px;
     width: 100%;
     /* background-color: rgb(18, 18, 18); */
@@ -9,7 +8,7 @@
     place-items: center;
     
 }
-.kpimg{
+.kpimg,.alImg{
     width: 100%;
     opacity: 0.6;
     height: 100%;
@@ -90,6 +89,7 @@
 .blcomp:hover{
     cursor: pointer;
     box-shadow: 0.2px 0.2px 5px white;
+    color: antiquewhite;
 }
 
 .blimg{

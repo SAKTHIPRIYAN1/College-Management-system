@@ -79,6 +79,7 @@
 .gradi{
     height: 300px;
     width: 200px;
+    z-index: -1;
     filter: blur(100px);
     position: absolute;
     transform: rotate(230deg);
@@ -162,9 +163,12 @@
     align-items: center;
     margin-left: -90px;
     margin-right: -90px;
-    margin-bottom: -10px;
+    /* margin-bottom: -10px; */
+    padding-bottom: 10px;
+
 }
 .svgs{
+    margin-top: 0px;
     display: flex;
     justify-content: space-between;
 }

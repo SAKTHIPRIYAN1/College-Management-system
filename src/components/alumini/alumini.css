@@ -1,0 +1,183 @@
+.alimgcont{
+    height: 400px;
+    display: grid;
+    place-items: center;
+    margin-top: 35px;
+}
+.alimg{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.al_txt{
+    color: rgb(184, 184, 184);
+    position: absolute;
+    font-size: 90px;  
+    opacity: 0.9;
+}
+.NewsRoomcont{
+    margin-top: 35px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    /* background-color: aqua; */
+}
+.nrm{
+    font-size: 40px;
+    color: rgb(221, 215, 208);
+    margin-bottom: 0px;
+    position: relative;
+}
+.nrm::after{
+    content: '';
+    position: absolute;
+    width: 12%;
+    height: 5px;
+    background-color: rgb(144, 1, 205);
+    top: 95%;
+    left: 0%;
+    border-radius: 5px;
+
+}
+.ev_divCon{
+    /* background-color: aqua; */
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+.el_div{
+    background-color: rgba(38, 38, 38, 0.488);
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    border-radius: 13px;
+
+}
+.el_com_div{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    /* font-size: 15px; */
+    /* align-items: start; */
+
+}
+.el_com_div:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.picDiv{
+   
+    /* background-color: aqua; */
+    display: flex;
+    width: 100%;
+}
+.ic_img{
+    width: 25%;
+}
+
+.blogsCon{
+    /* background-color: aqua; */
+    width: 100%;
+    position: relative;
+    /* height: 400px; */
+    /* display: flex; */
+}
+
+.evdgr{
+    margin-top: 30px;
+    display: flex;
+    /* background-color: bisque; */
+    height: 314px;
+    margin-bottom: 30px;
+    align-items: start;
+    justify-content: space-between;
+}
+.evvdet{
+    /* background-color: aquamarine; */
+    height: 310px;
+    width: 42%;
+}
+.evdes{
+    background-color: #2e2e31;
+    border-radius: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: all ease-in;
+    border-bottom: 1px solid rgb(194, 191, 191);
+    padding-left: 10px;
+    padding-right: 15px;
+}
+.evdes:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.evtit{
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(212, 212, 212);
+}
+
+.evtym{
+    color: rgb(185, 198, 209);
+}
+.eventpics{
+    height: 100%;
+    object-fit: contain;
+    background-color: aliceblue;
+}
+.evp{
+    height: 100%;
+}
+.algallry{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.al_gal_img{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+.al_img{
+    height: 180px;
+    /* width: 16%; */
+    transition: transform 0.3s ease;
+}
+.imgconal{
+    height: 180px;
+    width: 16%;
+    overflow: hidden;
+}
+
+.al_img:hover{
+    transform: scale(1.2,1.2);
+    transition: all 600ms;
+    cursor: pointer;
+}
+
+.algradi{
+    height: 180px;
+    width: 300px;
+    filter: blur(100px);
+    position: absolute;
+    transform: rotate(370deg);
+    left: 38%;
+    top: -14%;
+    background-image: linear-gradient(270.46deg, rgba(169, 82, 255, 0.49) 24.29%, rgba(85, 82, 255, 0.641667) 64.5%, rgba(200, 82, 255, 0.21) 99.62%);
+}
+.alg1{
+    top: 10px;
+    z-index: -1;
+}
+.alg2{
+    top: 10px;
+    opacity: 0.6;
+    left: 25%;
+}
