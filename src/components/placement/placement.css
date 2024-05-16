@@ -114,3 +114,26 @@
 .clr{
     color: violet;
 }
+
+@media screen and (max-width:708px) {
+    .patt{
+        height: 250px;
+        width: 150px;
+    }
+    .blcomp{
+        font-size: 10px;
+    }
+    .blimg{
+        height: 50px;
+        width: 50px;
+    }
+    .trpl{
+        font-size: 55px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .patt{
+        display: none;
+    }
+}

@@ -5,6 +5,7 @@ import Footer from "./components/footer/foot";
 import { Route,Routes } from "react-router-dom";
 import Placement from "./components/placement/placement";
 import Alumini from "./components/alumini/alumini";
+import Loginpage from "./components/login/login";
 const App=()=>{
     return(
     <>
@@ -14,6 +15,7 @@ const App=()=>{
             <Route path="/alumini" element={<Alumini />} />
             <Route path="/" element={<Home />} />
             <Route path="/placement" element={<Placement />} />
+            <Route path="/loginpage" element={<Loginpage />} />
         </Routes>
         
         <Footer />

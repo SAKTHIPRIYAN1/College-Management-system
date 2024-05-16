@@ -1,0 +1,13 @@
+.adminlog{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    align-items: center;
+    margin-top: 30px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}

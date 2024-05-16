@@ -12,7 +12,7 @@
 .al_txt{
     color: rgb(184, 184, 184);
     position: absolute;
-    font-size: 90px;  
+    font-size: 60px;  
     opacity: 0.9;
 }
 .NewsRoomcont{
@@ -91,14 +91,14 @@
     margin-top: 30px;
     display: flex;
     /* background-color: bisque; */
-    height: 314px;
+    /* height: 314px; */
     margin-bottom: 30px;
     align-items: start;
     justify-content: space-between;
 }
 .evvdet{
     /* background-color: aquamarine; */
-    height: 310px;
+    /* height: 310px; */
     width: 42%;
 }
 .evdes{
@@ -131,10 +131,11 @@
 .eventpics{
     height: 100%;
     object-fit: contain;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
 }
 .evp{
-    height: 100%;
+    height: 314px;
+    width: 50%;
 }
 .algallry{
     width: 100%;
@@ -158,7 +159,7 @@
 
 .al_img:hover{
     transform: scale(1.2,1.2);
-    transition: all 600ms;
+    /* transition: all 600ms; */
     cursor: pointer;
 }
 
@@ -180,4 +181,47 @@
     top: 10px;
     opacity: 0.6;
     left: 25%;
+}
+
+@media screen and (max-width:708px) {
+ .al_txt{
+    font-size: 50px;
+ } 
+ .evvdet{
+    height: max-content;
+ }
+ .evImg{
+    display: none;
+ }  
+ .evdgr{
+    display: flex;
+    flex-direction: column;
+ }
+ .evdgr{
+    height: max-content;
+ }
+ .evvdet{
+    width: 100%;
+ }
+ .eventpics{
+    margin-top: 30px;
+    width: 100%;
+    display:flex;
+    justify-content:space-between;
+ }
+
+ .evp{
+    width: 250px
+ }
+
+}
+
+@media screen and (max-width:500px) {
+    .eventpics{
+        margin-top: 70px;
+        background-color: transparent;
+    }
+    .evp{
+        width: 150px
+     }
 }

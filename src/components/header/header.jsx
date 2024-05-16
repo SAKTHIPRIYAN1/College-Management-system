@@ -33,7 +33,7 @@ const Head = () => {
         },
         {
             name: 'Login',
-            link: '/login'
+            link: '/loginpage'
         }
     ];
 
@@ -147,7 +147,7 @@ const AdditionalButtons = () => {
             <NavLink to={"/placement"} className='head_butt mbl_butt'>Placement</NavLink>
             <NavLink to={"/alumini"} className='head_butt mbl_butt'>Alumini</NavLink>
             <NavLink to={'/'} className='head_butt mbl_butt'>Home</NavLink>
-            <NavLink to={"/login"} className='head_butt mbl_butt '>Login</NavLink>
+            <NavLink to={"/loginpage"} className='head_butt mbl_butt '>Login</NavLink>
         </div>
     );
 };
