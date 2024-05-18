@@ -270,7 +270,7 @@ const Gallery = () => {
                 transition={{ duration: 0.4, delay: 0.4 }}
             >
                 {imDiv.map((el, ind) => (
-                    <div className="imgconal">
+                    <div className="imgconal" key={ind}>
                     <img className='al_img' key={ind} src={el} alt="loading.." />
                     </div>
                 ))}

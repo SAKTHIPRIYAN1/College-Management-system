@@ -1,13 +1,146 @@
-.adminlog{
-    height: 300px;
+
+.login{
+    margin-top: 30px;
+    height: 75vh;
     display: flex;
     flex-direction: column;
-    background-color: aqua;
+    margin-bottom: 80px;
+    width: 100%;
+    /* background-color: aliceblue; */
+    /* justify-content: center; */
+}
+.lgim{
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+    position: absolute;
+    /* filter: blur(2px); */
+    z-index: -1;
+}
+
+#ch{
+    /* align-self: center; */
+    margin-left: 15px;
+    height: 30px;
+    background-color: black;
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    box-shadow: .2px .1px 1px white;
+    padding-left: 15px;
+    width: 100px;
+}
+#ch:hover{
+    cursor: pointer;
+}
+.logch{
+    /* width: 20%; */
+    /* background-color: antiquewhite; */
+    display: flex;
     align-items: center;
-    margin-top: 30px;
+    margin-bottom: 10px;
+    
+}
+
+.chh1{
+    margin: 0px;
+    margin-bottom: 10px;
+    color: rgb(203, 219, 233);
+}
+.adminlog{
+    border-radius: 8px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    align-items: center;
+}
+
+.adform{
+    margin-top: 25px;
+    position: relative;
+    background-color: rgb(10, 10, 11);
+    /* box-shadow: 0.2px 0.2px 1px white; */
+    border: 1px solid rgb(202, 202, 202);
+    display:flex;
+    flex-direction: column;
+    opacity: 0.9;
+    backdrop-filter: blur(100px);
+    align-items: center;
+    /* border-radius: 10px; */
+    height: 100%;
+    width:67%;
 }
 .form{
+    user-select: none;
+    height: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
     flex-direction: column;
-    width: 30%;
+}
+.frmdiv{
+    margin-bottom: 25px;
+     padding-right: 0px;
+     width: 100%;
+
+}
+.labelinp{
+    font-size: 17px;
+}
+.form input{
+    margin-top: 4px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    background-color: rgba(142, 150, 189, 0.437);
+    color: aliceblue;
+    font-size: 15px;
+    border: 0.5px solid gray;
+    outline: none; 
+    border-radius: 5px;
+    width: 97%;
+    margin-right: 0px;
+}
+input:focus {
+    /* box-shadow: inset 0 0 5px #e9e4e4; Red inset shadow */
+    outline: 1.5px solid white;
+}
+.h1{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.logp{
+    margin-top: 2px;
+    color: rgb(139, 139, 139);
+}
+.bg{
+    background-color: rgba(142, 150, 189, 0.437);
+    width: 100%;
+    margin: 0px;
+}
+
+.fgpwd{
+    margin-top: 15px;
+    color: rgb(188, 206, 206);
+}
+.clkhr{
+    color: rgb(212, 212, 211);
+}
+.clkhr:hover{
+    color:white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.fwddiv{
+    /* background-color: aliceblue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

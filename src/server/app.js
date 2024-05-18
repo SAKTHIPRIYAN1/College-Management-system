@@ -44,13 +44,13 @@ getPgVersion();
 
 // PostgreSQL client setup (example configuration, customize with your DB credentials)
 
-app.post('/login', async (req, res) => {
+app.post('/admin/login', async (req, res) => {
   // const { adminId, password } = req.body;
  let admin;
   try {
     const query = "select * from adminmain";
     const result = await db.query(query);
-    console.log(result.rows[0]);
+    console.log(result.rows);
    
   }
   catch(er){

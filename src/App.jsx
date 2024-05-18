@@ -6,10 +6,10 @@ import { Route,Routes } from "react-router-dom";
 import Placement from "./components/placement/placement";
 import Alumini from "./components/alumini/alumini";
 import Loginpage from "./components/login/login";
-const App=()=>{
+const App=()=>{ 
     return(
     <>
-        <Head />
+        <Head/>
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/alumini" element={<Alumini />} />
