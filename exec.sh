@@ -1,3 +1,3 @@
 cd src
 cd server
-node app.js
+npm run nodem

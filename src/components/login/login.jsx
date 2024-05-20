@@ -4,8 +4,10 @@ import img from '../img/lg.jpg';
 import { useState,useRef, useEffect } from 'react';
 import { animate, motion,useAnimation,useInView } from 'framer-motion';
 import { easeIn } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
-import Signup from './signupal';
+
+
 const Loginpage = () => {
     let [choice, setChoice] = useState('Admin');
     let changeLog = (e) => {
@@ -13,7 +15,7 @@ const Loginpage = () => {
     };
     return (
         <div className="login">
-            {/* <div className="logch">
+            <div className="logch">
                 <h2 className='chh1'>Choice :</h2>
                 <select name="choice" id="ch" onChange={changeLog}>
                     <option value="Admin">Admin</option>
@@ -22,9 +24,7 @@ const Loginpage = () => {
             </div>
             
             {choice === 'Admin' && <AdministorLogin />}
-            {choice === 'Alumni' && <AlumniLogin />} */}
-
-            <Signup />
+            {choice === 'Alumni' && <AlumniLogin />}
         </div>
     );
 };
@@ -32,16 +32,34 @@ const Loginpage = () => {
 const AdministorLogin = () => {
     let [adminId, setAdminId] = useState("");
     let [adminPassword, setAdminPassword] = useState("");
+    let [errmsg, seterrmsg] = useState("");
 
+    const navigate = useNavigate();
     const handleClick = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5174/admin/login', { id: adminId, password: adminPassword });
+            const response = await axios.post('http://localhost:3000/login/admin', { id: adminId, password: adminPassword });
             console.log(response.data);
+            seterrmsg('');
+            localStorage.setItem('token', response.data.token);
+            navigate('/adminDash');
         } catch (error) {
-            console.log(error);
+            if (error.response) {
+                console.log(error.response.data);
+                seterrmsg(error.response.data.msg);
+            }
+            else if (error.request) {
+                // The request was made but no response was received
+                console.log('Error request data:', error.request);
+                seterrmsg(error.request.data.msg);
+            }
+            else{
+                console.log('server error');
+                seterrmsg("server error :500 ");
+            }
         }
     };
+
     let adminref=useRef(null);
     let adminvw=useInView(adminref);
     let adctrl=useAnimation();
@@ -77,6 +95,7 @@ const AdministorLogin = () => {
                     </div>
                     <button type="submit" className='head_butt bg'>Login</button>
                     <label className='fgpwd'>Forgot password? <span className='clkhr' style={{fontWeight:'bold'}}>Click here</span></label>
+                    <p className='errmsg'>{errmsg}</p>
                 </form>
             </div>
         </motion.div>
@@ -84,16 +103,34 @@ const AdministorLogin = () => {
 };
 
 const AlumniLogin = () => {
+    const navigate = useNavigate();
     let [alumniId, setAlumniId] = useState("");
     let [alumniPassword, setAlumniPassword] = useState("");
+    let [alerr, seterrmsg] = useState("");
 
     const handleClick = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5174/alumni/login', { id: alumniId, password: alumniPassword });
+            const response = await axios.post('http://localhost:3000/login/alumini', { regno: alumniId, password: alumniPassword });
             console.log(response.data);
-        } catch (error) {
-            console.log(error);
+            seterrmsg('');
+            localStorage.setItem('token', response.data.token);
+            navigate('/aluminiDash');
+
+        }catch (error) {
+            if (error.response) {
+                console.log(error.response.data);
+                seterrmsg(error.response.data.msg);
+            }
+            else if (error.request) {
+                // The request was made but no response was received
+                console.log('Error request data:', error.request);
+                seterrmsg(error.request);
+            }
+            else{
+                console.log('server error');
+                seterrmsg("server error :500 ");
+            }
         }
     };
 
@@ -106,6 +143,10 @@ const AlumniLogin = () => {
             aluctrl.start('animate');
     },[aluvw])
 
+    const signup=()=>{
+        console.log('signup');
+        navigate('/loginpage/signup');
+    }
     
 
     return (
@@ -127,8 +168,8 @@ const AlumniLogin = () => {
                     <h1 className='h1'>Welcome</h1>
                     <p className='logp'>Login to continue to alumni page</p>
                     <div className="frmdiv">
-                        <label className="labelinp" htmlFor="alumniId">Alumni ID</label>
-                        <input type="text" id="alumniId" placeholder='Your alumni ID' name="alumniId" onChange={(e) => setAlumniId(e.target.value)} required/>
+                        <label className="labelinp" htmlFor="alumniId">Reg NO</label>
+                        <input type="text" id="alumniId" placeholder='Your Reg no' name="alumniId" onChange={(e) => setAlumniId(e.target.value)} required/>
                     </div>
                     <div className="frmdiv">
                         <div className="fwddiv">
@@ -138,7 +179,8 @@ const AlumniLogin = () => {
                         <input type="password" id="alumniPassword" placeholder='Your password' name="alumniPassword" onChange={(e) => setAlumniPassword(e.target.value)} required/>
                     </div>
                     <button type="submit" className='head_butt bg'>Login</button>
-                    <label className='fgpwd'>Don't have an account? <span className='clkhr' style={{fontWeight:'bold'}}>Sign up</span></label>
+                    <label className='fgpwd'>Don't have an account? <span className='clkhr' onClick={signup} style={{fontWeight:'bold'}}>Sign up</span></label>
+                    <p className='errmsg'>{alerr}</p>
                 </form>
             </div>
         </motion.div>

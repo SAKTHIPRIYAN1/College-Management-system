@@ -1,5 +1,5 @@
 {
-  "name": "ceg",
+  "name": "srvr",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,10 +14,12 @@
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "framer-motion": "^11.1.9",
+    "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.0",
     "pg": "^8.11.5",
     "react": "^18.2.0",
@@ -28,10 +30,16 @@
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "postcss": "^8.4.38",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "This is my first React project.",
+  "main": "app.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -70,7 +70,7 @@ const Head = () => {
 const Butt = ({ prp1 }) => {
     
     const { name,link } = prp1;
-    console.log(link);
+    // console.log(link);s
     if (name === 'Login') {
         return (
             <NavLink to={link} className='head_butt button1'>{name}</NavLink>

@@ -1,0 +1,169 @@
+.signup{
+    width: 100%;
+    height: 90vh;
+    /* background-color: antiquewhite; */
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 0.6px solid white;
+}
+.sgim{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0.5;
+    z-index: -1;
+}
+.formsignup{
+    margin-top: 10px;
+    height: 85%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* background-color: aqua; */
+    justify-content: space-between;
+}
+.sindiv{
+    /* background-color: aqua; */
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.rhtfrm{
+    /* background-color: rgb(23, 80, 129); */
+    margin-left: 50px;
+    width: 35%;
+}
+.lftfrm{
+    /* background-color: rgb(23, 80, 129); */
+    margin-right: 50px;
+    width: 35%;
+}
+
+.alh1{
+    margin:0px;
+    margin-top: 20px;
+    justify-self: center;
+    align-self: center;
+}
+.sgninp{
+    margin-top: 4px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    background-color: rgba(142, 150, 189, 0.437);
+    color: aliceblue;
+    font-size: 15px;
+    border: 0.5px solid gray;
+    outline: none; 
+    border-radius: 5px;
+    width: 97%;
+    margin-right: 0px;
+}
+.sgnfrm{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+}
+.sgnrg{
+    justify-self: center;
+    align-self:center;
+    width: 30%;
+}
+.cursor:hover{
+    cursor: pointer;
+}
+.othrdet{
+    width: 100%;
+    padding-left: 8px;
+    background-color: rgba(142, 150, 189, 0.437);
+    color: aliceblue;
+    font-size: 15px;
+    border: 0.5px solid gray;
+    border-radius: 8px;
+    outline: none; 
+    height: 110px;
+}
+.othrdet:focus{
+    outline: 1.5px solid white;
+}
+.errmsg{
+    align-self: center;
+    color: #ec0000;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+.passcon{
+    height: 75vh;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.error{
+    border-color: red;
+}
+.passcontain{
+    width: 55%;
+    margin-left: auto;
+    /* background-color: #ec0000; */
+    margin-right: auto;
+}
+.crp{
+    margin-top: 0px;
+    font-size: 35px;
+}
+.passdiv{
+    margin-bottom: 20px;
+}
+
+.passfrm{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.passbutt{
+    width: 100%;
+    margin-top: 10px;
+}
+.mar10{
+    margin-top: 15px;
+}
+
+@media screen and (max-width:550px) {
+    .adform{
+        /* background-color: aliceblue; */
+        width: 100%;
+    }
+    .formsignup{
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+    }
+    .rhtfrm{
+        width: 70%;
+    }
+    .lftfrm{
+        width: 70%;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    .signup{
+        width: 100%;
+        height: 100%;
+    }
+    .sgnfrm{
+        margin-bottom: 30px;
+    }
+    .alh1{
+        font-size:30px;
+    }
+}
