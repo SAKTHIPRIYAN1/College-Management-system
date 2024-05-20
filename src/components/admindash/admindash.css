@@ -1,13 +1,10 @@
 
 .admincontain{
-    /* background-color: aliceblue; */
-    /* position: fixed; */
     margin-top: -15px;
     margin-left:-58px;
     margin-right: -58px;
 }
 .admindash{
-    height: 84vh;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -16,32 +13,40 @@
 
 .adminside{
     padding: 10px;
-    padding-top:30px ;
-    width: 20%;
+    padding-top:60px ;
+    width: 13%;
    background-color: #0d0e11;
+   /* background-color: #b02c2c; */
     font-size: 17px;
     position: absolute;
+    /* display: none; */
    left: -8px;
      top: 40px;
     bottom: 0px; 
 }
 .adminbdy{
     width: 100%;
-    margin-left: 10%;
+    margin-left: 13%;
     padding: 30px;
     padding-top: 20px;
     background-color: #171717;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
+    padding-bottom: 12px;
     align-items: center;
 }
-
+.sidtp{
+    color: inherit;
+    text-decoration: none;
+}
 .sidlink{
     height: 35px;
     margin-bottom: 15px;
     /* background-color: rgb(16, 18, 20); */
     border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
     display: flex;
     align-items: center;
     /* justify-content: center; */
@@ -56,14 +61,144 @@
 .adDetRows{
     display: flex;
     /* background-color: aliceblue; */
-    width: 60%;
+    width: 90%;
     justify-content: space-between;
     margin-bottom: 35px;
+    margin-left: 14%;
+    margin-top: 17px;
 }
 .labeladdr{
     font-size: 25px;
     margin-bottom: 10px;
 }
+.adminsindiv{
+    width: 100%;
+    /* background-color: aliceblue; */
+}
 .ext{
-    width: 250px;
+    width: 70%;
+}
+.mr40{
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* news room... */
+.newscon{
+
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aliceblue; */
+    /* justify-content: center; */
+}
+.creatAnnoun{
+    width: 90%;
+    /* margin-right: auto;
+    margin-left: auto; */
+    /* background-color: #0d0e11; */
+}
+.nwsrow{
+    width: 100%;
+    background-color: #171717;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.nwsdiv{
+    /* background-color: aliceblue; */
+    display: flex;
+    /* justify-content: space-between;   */
+    align-items: center;
+    width: 40%;
+}
+.nwsinp{
+    /* user-select: none; */
+    /* margin-top: 4px; */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    background-color: rgba(142, 150, 189, 0.437);
+    color: aliceblue;
+    font-size: 15px;
+    border: 0.5px solid gray;
+    outline: none; 
+    border-radius: 5px;
+    width: 97%;
+    margin-right: 0px;
+    margin-left: 15px;
+}
+.nwsinp:focus{
+    outline: 1.5px solid white;
+}
+.dt{
+    user-select:none;
+    cursor: pointer;
+}
+.announcement{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.announce_contain{
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    margin-top: 25px;
+    flex-direction: column;
+    /* background-color: #b02c2c; */
+}
+.announce{
+    height: 50vh;
+    /* width: 100%; */
+    margin-top: 10px;
+    padding-left: 8px;
+    background-color: rgba(142, 150, 189, 0.437);
+    color: aliceblue;
+    font-size: 15px;
+    border: 0.5px solid gray;
+    border-radius: 3px;
+}
+.announce:focus{
+    outline: 1.5px solid white;
+}
+.nws_butt{
+    background-color: rgba(142, 150, 189, 0.437);
+    color: aliceblue;
+    font-size: 15px;
+    height: 40px;
+    margin-top: 20px;
+    align-self: center;
+    justify-self: center;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 3px;
+}
+.nws_butt:hover{
+    cursor: pointer;
+}
+.nws_butt:active{
+    transform: scale(0.9);
+}
+.ad_add_frm{
+    margin-bottom: 40px;
+}
+@media screen and (max-width:708px) {
+    .nwsrow{
+        flex-direction: column;
+    }
+    .nwsdiv{
+        width: 100%;
+        margin-top: 20px;
+    }
 }

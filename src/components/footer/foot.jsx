@@ -3,7 +3,7 @@ const Footer=()=>{
         
     return(
         <div className="foo" id="contact">
-            <h3>Contact</h3>
+            <h3 style={{margin:'0px'}}>Contact</h3>
             <div className="svgs">
                 <svg className='sv'
             stroke="currentColor"

@@ -12,6 +12,7 @@ import authjwt from './middlewares/authjwt.js';
 // routes..
 import log from './routes/loginroutes.js';
 import al from './routes/AluminiregisterRoutes.js';
+import adminrt from './routes/Adminroutes.js'
 
 let app=express();
 app.use(cors());
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 
 const loginroute=log.loginroute;
 let aluminiRoute=al.AluminiRoute;
+let adminRoute=adminrt.adminRoute;
 const auth=authjwt.auth;
 
 // console.log(AluminiRoute);
@@ -45,16 +47,22 @@ app.use((req, res, next) => {
   next();
 });
 
+
 //  auth middleware
 
 app.use('/login', loginroute);
 app.use('/alumini',aluminiRoute);
+app.use('/admin',adminRoute);
 
+
+  
+
+// for all protected queries....
 app.get('/protect',auth,(req,res)=>{
   res.status(200).json({msg:'sucess'});
 })
 
 const PORT = 3000;
-app.listen(PORT, () => {
+app.listen(PORT,() => {
   console.log(`Express listening on port ${PORT}`);
 })

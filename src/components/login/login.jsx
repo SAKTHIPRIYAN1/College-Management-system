@@ -8,8 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Loginpage = () => {
-    let [choice, setChoice] = useState('Admin');
+const Loginpage = (props) => {
+    let initial=props.page;
+    let [choice, setChoice] = useState(initial);
     let changeLog = (e) => {
         setChoice(e.target.value);
     };
@@ -17,7 +18,7 @@ const Loginpage = () => {
         <div className="login">
             <div className="logch">
                 <h2 className='chh1'>Choice :</h2>
-                <select name="choice" id="ch" onChange={changeLog}>
+                <select name="choice" id="ch" onChange={changeLog} value={choice}>
                     <option value="Admin">Admin</option>
                     <option value="Alumni">Alumni</option>
                 </select>
@@ -40,8 +41,12 @@ const AdministorLogin = () => {
         try {
             const response = await axios.post('http://localhost:3000/login/admin', { id: adminId, password: adminPassword });
             console.log(response.data);
+            console.log('ctr pass key for admin')
             seterrmsg('');
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('ini', response.data.ini)
+            // str admin details in local stroage...
+            localStorage.setItem('admin', JSON.stringify(response.data.admin));
             navigate('/adminDash');
         } catch (error) {
             if (error.response) {
@@ -50,8 +55,9 @@ const AdministorLogin = () => {
             }
             else if (error.request) {
                 // The request was made but no response was received
-                console.log('Error request data:', error.request);
-                seterrmsg(error.request.data.msg);
+                seterrmsg("internal server error");
+                console.log(error.request);
+                
             }
             else{
                 console.log('server error');
@@ -59,6 +65,7 @@ const AdministorLogin = () => {
             }
         }
     };
+    
 
     let adminref=useRef(null);
     let adminvw=useInView(adminref);

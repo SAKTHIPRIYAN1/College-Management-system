@@ -30,6 +30,7 @@ const ConfirmPass=(props)=>{
                 let response= await axios.post('http://localhost:3000/alumini/register',finalData)
                 seterrmsg('');
                 localStorage.setItem('token', response.data.token);
+                e.target.reset();
                 navigate('/aluminiDash');
                 }
                 catch(error){
@@ -57,11 +58,11 @@ const ConfirmPass=(props)=>{
                 <h1 className='crp'>Create Password For register</h1>
                 <div className="sindiv passdiv">
                             <label className='labelinp'  htmlFor="password">Name</label>
-                            <input type="text"  className='sgninp' name="password"  placeholder='Enter password' required/>
+                            <input type="password"  className='sgninp' name="password"  placeholder='Enter password' required/>
                 </div>
                 <div className="sindiv passdiv">
                             <label className='labelinp'  htmlFor="name">Name</label>
-                            <input type="text" name='confrm_password' className='sgninp'  placeholder='Conform Password' required/>
+                            <input type="password" name='confrm_password' className='sgninp'  placeholder='Conform Password' required/>
                 </div>
                 
                 <button type="submit" className='head_butt bg passbutt'>Register</button>
