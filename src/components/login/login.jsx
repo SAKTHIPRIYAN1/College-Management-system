@@ -1,14 +1,17 @@
 import './login.css';
 import axios from 'axios';
 import img from '../img/lg.jpg';
-import { useState,useRef, useEffect } from 'react';
+import { useState,useRef, useEffect,useContext } from 'react';
 import { animate, motion,useAnimation,useInView } from 'framer-motion';
 import { easeIn } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-
+import { AuthContext } from '../../auth';
 
 const Loginpage = (props) => {
+    
+    const { login } = useContext(AuthContext);
+
     let initial=props.page;
     let [choice, setChoice] = useState(initial);
     let changeLog = (e) => {
@@ -24,13 +27,13 @@ const Loginpage = (props) => {
                 </select>
             </div>
             
-            {choice === 'Admin' && <AdministorLogin />}
-            {choice === 'Alumni' && <AlumniLogin />}
+            {choice === 'Admin' && <AdministorLogin login={login} />}
+            {choice === 'Alumni' && <AlumniLogin login={login}  />}
         </div>
     );
 };
 
-const AdministorLogin = () => {
+const AdministorLogin = ({login}) => {
     let [adminId, setAdminId] = useState("");
     let [adminPassword, setAdminPassword] = useState("");
     let [errmsg, seterrmsg] = useState("");
@@ -43,14 +46,17 @@ const AdministorLogin = () => {
             console.log(response.data);
             console.log('ctr pass key for admin')
             seterrmsg('');
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('ini', response.data.ini)
-            // str admin details in local stroage...
-            localStorage.setItem('admin', JSON.stringify(response.data.admin));
+
+           sessionStorage.setItem('token', response.data.token);
+            sessionStorage.setItem('admin', JSON.stringify(response.data.admin));
+            login();
             navigate('/adminDash');
         } catch (error) {
             if (error.response) {
                 console.log(error.response.data);
+                if(error.request=='')
+                    seterrmsg('internet error')
+                
                 seterrmsg(error.response.data.msg);
             }
             else if (error.request) {
@@ -109,7 +115,7 @@ const AdministorLogin = () => {
     );
 };
 
-const AlumniLogin = () => {
+const AlumniLogin = ({login}) => {
     const navigate = useNavigate();
     let [alumniId, setAlumniId] = useState("");
     let [alumniPassword, setAlumniPassword] = useState("");
@@ -121,9 +127,11 @@ const AlumniLogin = () => {
             const response = await axios.post('http://localhost:3000/login/alumini', { regno: alumniId, password: alumniPassword });
             console.log(response.data);
             seterrmsg('');
-            localStorage.setItem('token', response.data.token);
-            navigate('/aluminiDash');
 
+            sessionStorage.setItem('token', response.data.token);
+            sessionStorage.setItem('alum', JSON.stringify(response.data.finaldata));
+            login();
+            navigate('/aluminiDash');
         }catch (error) {
             if (error.response) {
                 console.log(error.response.data);
@@ -132,6 +140,8 @@ const AlumniLogin = () => {
             else if (error.request) {
                 // The request was made but no response was received
                 console.log('Error request data:', error.request);
+                if(error.request=='')
+                    seterrmsg('internet error')
                 seterrmsg(error.request);
             }
             else{

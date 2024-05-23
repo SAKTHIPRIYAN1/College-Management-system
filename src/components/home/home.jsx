@@ -1,6 +1,9 @@
 import './home.css';
 import { useEffect,useState,useRef } from 'react';
-import { easeIn, motion,useAnimation,useInView } from 'framer-motion';
+import { easeIn, motion,useAnimation,useInView,AnimatePresence } from 'framer-motion';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 
 import img1 from '../img/caro1.jpeg';
@@ -15,6 +18,7 @@ import img8 from '../img/caro8.jpeg';
 
 import mn  from '../img/mnn.png'
 
+import axios from 'axios';
 // import Head from '../header/header';
 const Home=()=>{
 
@@ -30,6 +34,7 @@ const Home=()=>{
             <CollegeAbout />
              <CegDet />
             <Rank />
+            <NewsRoom />
         </div>
     )
 }
@@ -205,6 +210,100 @@ const Rank=()=>{
         </div>
     )
 }
+
+const NewsRoom=()=>{
+    return(
+        <>
+        <h1>
+            Announcements
+        </h1>
+        <News />
+        </>
+    )
+}
+
+
+const News = () => {
+    const [news, setNews] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [direction, setDirection] = useState(0); // To track animation direction
+
+    useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                let resp = await axios.get('http://localhost:3000/general/home/news');
+                setNews(resp.data.result);
+            } catch (err) {
+                console.log('Error occurred');
+                setNews(["An error occurred"]);
+            }
+        };
+        fetchNews();
+    }, []);
+
+    const handleNext = () => {
+        setDirection(1);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % news.length);
+    };
+
+    const handlePrevious = () => {
+        setDirection(-1);
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + news.length) % news.length);
+    };
+
+    const variants = {
+        enter: (direction) => ({
+            x: direction > 0 ? 1000 : -1000,
+            opacity: 0
+        }),
+        center: {
+            x: 0,
+            opacity: 1
+        },
+        exit: (direction) => ({
+            x: direction < 0 ? 1000 : -1000,
+            opacity: 0
+        })
+    };
+
+    return (
+        <div className="newscontain">
+            {news.length > 0 && (
+                <div className="carousel">
+                        <motion.div
+                            key={currentIndex}
+                            custom={direction}
+                            variants={variants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{
+                                x: { type: "spring", stiffness: 300, damping: 30 },
+                                opacity: { duration: 0.2 }
+                            }}
+                            className="nwBl"
+                        >
+                            <div className="first_bl">
+                                <h2 className='h1n'>{news[currentIndex].title}</h2>
+                                <p>{news[currentIndex].date_pub.split('T')[0]}</p>
+                            </div>
+                            <div className="nwsCont">
+                                {news[currentIndex].content}
+                            </div>
+                        </motion.div>
+                </div>
+            )}
+            <div className="navigation">
+                <button onClick={handlePrevious} className="nav-btn head_butt h1">
+                    <div whileTap={{ scale: 0.9 }}>pre</div>
+                </button>
+                <button onClick={handleNext} className="nav-btn head_butt h1">
+                    <div whileTap={{ scale: 0.9 }}>next</div>
+                </button>
+            </div>
+        </div>
+    );
+};
 
 
 export default Home;

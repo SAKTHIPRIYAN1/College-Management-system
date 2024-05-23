@@ -15,7 +15,8 @@ const AdminDash = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const token = localStorage.getItem('token');
+
+            const token = sessionStorage.getItem('token');
             try {
                 const response = await axios.get('http://localhost:3000/protect', {
                     headers: { Authorization: `Bearer ${token}` }
@@ -24,6 +25,7 @@ const AdminDash = () => {
                 setLoading(false);
             } catch (error) {
                 navigate('/loginpage/admin',{ replace: true });
+                console.log('error fetching auth from admin dash');
                 setError(error);
                 setLoading(false);
             }
@@ -80,8 +82,9 @@ const AdminSide = () => {
         { topic: "Detais", path: '/adminDash'},
         { topic: "News", path: '/adminDash/news' },
         { topic: "Events", path: '/adminDash/events' },
-        { topic: "CUIC", path: '/adminDash/cuic' },
+        // { topic: "CUIC", path: '/adminDash/cuic' },
         { topic: "New User", path: '/adminDash/new-user' },
+        { topic: "Change Password", path: '/adminDash/changepassword' },
         { topic: "Logs", path: '/adminDash/logs' }
     ];
 
@@ -95,7 +98,5 @@ const AdminSide = () => {
         })
     );
 };
-
-
 
 export default AdminDash;

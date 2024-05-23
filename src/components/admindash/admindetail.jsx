@@ -2,15 +2,15 @@ import { useState,useEffect } from "react";
 
 const AdminDet=()=>{
     const [admin, setAdmin] = useState(null);
+
+    
     useEffect(() => {
         // Retrieve admin details from local storage
-        const adminDetails = localStorage.getItem('admin');
+        const adminDetails=sessionStorage.getItem('admin');
         if (adminDetails) {
             setAdmin(JSON.parse(adminDetails));
         }
-        console.log(adminDetails);
     }, []);
-
 
     return(
       <div className="mr40">

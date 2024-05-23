@@ -29,7 +29,11 @@ const ConfirmPass=(props)=>{
                 try{
                 let response= await axios.post('http://localhost:3000/alumini/register',finalData)
                 seterrmsg('');
-                localStorage.setItem('token', response.data.token);
+
+                sessionStorage.setItem('token', response.data.token);
+            //    console.log(response.data) ;
+                // sessionStorage.setItem('alum', response.data.finaldata);
+
                 e.target.reset();
                 navigate('/aluminiDash');
                 }
@@ -57,11 +61,11 @@ const ConfirmPass=(props)=>{
             <form onSubmit={handlesub} className='passfrm'>
                 <h1 className='crp'>Create Password For register</h1>
                 <div className="sindiv passdiv">
-                            <label className='labelinp'  htmlFor="password">Name</label>
+                            <label className='labelinp'  htmlFor="password">Enter Password</label>
                             <input type="password"  className='sgninp' name="password"  placeholder='Enter password' required/>
                 </div>
                 <div className="sindiv passdiv">
-                            <label className='labelinp'  htmlFor="name">Name</label>
+                            <label className='labelinp'  htmlFor="name">Confirm Password</label>
                             <input type="password" name='confrm_password' className='sgninp'  placeholder='Conform Password' required/>
                 </div>
                 

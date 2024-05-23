@@ -5,8 +5,8 @@ const News=()=>{
 
     const [admin, setAdmin] = useState(null);
     useEffect(() => {
-        // Retrieve admin details from local storage
-        const adminDetails = localStorage.getItem('admin');
+
+        const adminDetails=sessionStorage.getItem('admin');
         if (adminDetails) {
             setAdmin(JSON.parse(adminDetails));
         }
@@ -63,7 +63,7 @@ const CreateAnnoun=({ad})=>{
             try{
                 let response= await axios.post('http://localhost:3000/admin/announce',data2)
                 console.log("news inserted");
-                seterrmsg('');
+                seterrmsg('news inserted');
                 e.target.reset();
             }
             catch(error){
@@ -103,11 +103,15 @@ const CreateAnnoun=({ad})=>{
                     }
                     </div>
                     <div className="announce_contain">
+                        <div className="flex" style={{justifyContent:'space-between',flexDirection:"row",alignItems:'center'}}>
+                           
                          <label className='labelinp'  htmlFor='announce'>Announcement :</label>
+                         <p className="errmsg " style={{marginTop:'-10px'}}>{passmsg}</p>
+                         </div>
                         <textarea name="news" id="" className="announce" placeholder="Enter the announcement" required></textarea>
                     </div>
                     <button type="submit" className='nws_butt'>Announce</button>
-                    <p className='errmsg mar10'>{passmsg}</p>
+                    
                 </form>
         </div>
     )

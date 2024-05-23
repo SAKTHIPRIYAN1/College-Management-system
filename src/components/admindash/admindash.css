@@ -193,6 +193,60 @@
 .ad_add_frm{
     margin-bottom: 40px;
 }
+
+
+/* cahnge pass keyyyy */
+
+
+.rel{
+    height: 77vh;
+    display: grid;
+    place-items: center;
+    background-color: #171717;
+    width: 100%;
+    padding: 40px;
+}
+.chnDiv{
+    position: relative;
+    height: 100%;
+    width: 80%;
+    border: 1px solid white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+      background: rgba(13, 18, 35, 0.168);
+      border-radius: 10px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+}
+.abs{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0.5;
+    z-index: -1;
+}
+.clr_all{
+    width: 20%;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    background-color: rgba(139, 145, 181, 0.605);
+    align-self: flex-end;
+   font-size: 15px;
+}
+.flx_con{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
 @media screen and (max-width:708px) {
     .nwsrow{
         flex-direction: column;
@@ -201,4 +255,62 @@
         width: 100%;
         margin-top: 20px;
     }
+}
+.admin_logs_con,.event_req_con{
+    width: 100%;
+   min-height: 87vh;
+    /* background-color: aliceblue; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.adtr:nth-child(odd){
+    background-color: #1514152f;
+    /* width: 20%; */
+}
+
+.adtd{
+    width: 17%;
+}
+
+.butt_flex{
+    height: 50px;
+    /* background-color: aliceblue; */
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.adtr{
+    height: 50px;
+}
+
+.ad_butt{
+    align-self: center;
+    justify-self: center;
+    width: 40%;
+}
+
+.approve{
+    background-color: rgba(2, 79, 25, 0.628);
+}
+
+.reject{
+    background-color: rgba(96, 2, 2, 0.628);   
+}
+
+.approve:hover{
+    background-color: rgba(2, 79, 25, 0.372);
+}
+
+.reject:hover{
+    background-color: rgba(96, 2, 2, 0.357);
+}
+
+.adtr:nth-child(even){
+    background-color: #191c2886;
 }

@@ -11,6 +11,7 @@ import pl6 from '../img/BNY.png'
 
 import { useEffect, useState,useRef } from 'react';
 import { easeIn, motion,useAnimation,useInView } from 'framer-motion';
+import axios from 'axios';
 
 const Placement=()=>{
     useEffect(() => {
@@ -21,6 +22,7 @@ const Placement=()=>{
         <Transparent />
         <PlacDet />
         <Companies />
+        <PlacementRep />
         </div>
     )
 }
@@ -103,12 +105,11 @@ const PlacDet=()=>{
                 animate={pldctrl}
                 transition={{ duration: 0.4, delay: 0.2 }}
             />
-            <button className='plrp head_butt' ref={pldref}>Placement Report</button>
+             <button className='plrp head_butt' ref={pldref}>Placement Report</button>
         </div>
     )
 }
-
-const Companies = () => {
+    const Companies = () => {
     const cmpref = useRef(null);
     let cmpvw = useInView(cmpref);
     const cmpctrl = useAnimation();
@@ -132,11 +133,11 @@ const Companies = () => {
         },
         {
             imge: pl4,
-            name: "Microsoft Corpor",
+            name: "Arcesium",
         },
         {
             imge: pl5,
-            name: "Arcesium",
+            name: "Microsoft Corpor",
         },
         {
             imge: pl6,
@@ -206,4 +207,141 @@ const Plblock = (props) => {
     );
 };
 
+const PlacementRep=()=>{
+    return(
+        <>
+        <h1 id='plr' >
+            Placement Report
+        </h1>
+
+        <PlacementTab />
+
+        <h1 id='plr' >
+            Overall Report
+        </h1>
+
+        <Report />
+        </>
+        
+    )
+}
+
+const PlacementTab = () => {
+    const [year, setYear] = useState('');
+    const [department, setDepartment] = useState('CSE');
+    const [tableData, setTableData] = useState([]);
+
+    const handleYearChange = (e) => {
+       setYear(e.target.value)
+        console.log(year);
+    };
+
+    const handleDepartmentChange = (e) => {
+        setDepartment(e.target.value);
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+                try {
+                    console.log(year)
+                    const response = await axios.post('http://localhost:3000/general/placements',{year,department});
+                    setTableData(response.data);
+                    console.log(response.data);
+                } catch (err) {
+                    console.log('Error fetching data', err);
+                }
+            
+        };
+        fetchData();
+    }, [year, department]);
+
+    return (
+        <div className="plTab">
+            
+                <div className='flx_ch'>
+                    <div className=" sidiv" >
+                    <label htmlFor="year">Year:</label>
+                    <select id="year" value={year} onChange={handleYearChange}>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+         
+                    </select>
+                    </div>
+                
+                <div className=" sidiv" style={{marginLeft:"20px"}}>
+                    <label htmlFor="department">Department:</label>
+                    <select id="department" value={department} onChange={handleDepartmentChange}>
+                        <option value="CSE">CSE</option>
+                        <option value="ECE">ECE</option>
+                        <option value="CIVIL">CIVIL</option>
+                        <option value="MECH">MECH</option>
+                      
+                    </select>
+                </div>
+                </div>
+           
+
+            {tableData.length > 0 && (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Company</th>
+                            <th>Position</th>
+                            <th style={{borderRight:'none'}}>Package</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tableData.map((row, index) => (
+                            <tr key={index}>
+                                <td>{row.name}</td>
+                                <td>{row.company}</td>
+                                <td>{row.position}</td>
+                                <td style={{borderRight:'none'}}>{row.salary}</td>
+                              
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
+        </div>
+    );
+};
+const Report=()=>{
+    const [departmentSalaries, setDepartmentSalaries] = useState([]);
+
+    useEffect(() => {
+        const fetchDepartmentSalaries = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/general/department_salaries');
+                setDepartmentSalaries(response.data);
+            } catch (error) {
+                console.log('Error fetching department salaries:', error);
+            }
+        };
+
+        fetchDepartmentSalaries();
+    }, []);
+
+    return (
+        <table style={{marginBottom:'20px'}}>
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Average Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {departmentSalaries.map((department, index) => (
+                    <tr key={index}>
+                        <td>{department.department}</td>
+                        <td>{department.avg_salary+" LPA"}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+};
 export default Placement;

@@ -15,14 +15,22 @@ import AdminNewuser from "./components/admindash/adminNewuser";
 import News from "./components/admindash/adminNews";
 import Cuic from "./components/admindash/admincuic";
 import Adminevents from "./components/admindash/adminEvents";
+import AdminChangePass from "./components/admindash/adminChangePass";
+import Alumedit from "./components/alumnidash/alumedit";
+import Alumdet from "./components/alumnidash/alumdet";
+import Alumchanpass from "./components/alumnidash/alumchangpass";
+import Alumevent from "./components/alumnidash/alumevent";
+
+
+import { AuthProvider } from "./auth";
 
 const App=()=>{ 
     return(
-    <>
+      <AuthProvider>
         <Head/>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/alumini" element={<Alumini />} />
+            <Route path="/alumni" element={<Alumini />} />
             <Route path="/" element={<Home />} />
             <Route path="/placement" element={<Placement />} />
             <Route path="/loginpage/admin" element={<Loginpage page='Admin' />} />
@@ -30,7 +38,14 @@ const App=()=>{
             <Route path="/loginpage/alumini" element={<Loginpage page='Alumni' />} />
             <Route path="/loginpage/signup" element={<Signupalu />} />
           
-            <Route path="/aluminiDash" element={<AlumniDash />}/>
+
+          {/* nested route for aluminiii Dash... */}
+            <Route path="/aluminiDash" element={<AlumniDash />} >
+                <Route index element={<Alumdet />} />
+                <Route path="edit" element={<Alumedit/>} />
+                <Route path="events" element={<Alumevent />} />
+                <Route path="changepassword" element={<Alumchanpass />} />
+            </Route>
 
 
               {/* nexted route for adminDash....*/}
@@ -40,11 +55,12 @@ const App=()=>{
                         <Route path="events" element={<Adminevents />} />
                         <Route path="cuic" element={<Cuic />} />
                         <Route path="new-user" element={<AdminNewuser />} />
+                        <Route path="changepassword" element={<AdminChangePass />} />
                         <Route path="logs" element={<AdminLog />} />
                 </Route>
         </Routes>
         <Footer />
-    </>
+      </AuthProvider>
     )
 }
 

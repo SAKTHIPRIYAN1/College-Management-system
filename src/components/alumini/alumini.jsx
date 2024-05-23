@@ -1,5 +1,6 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect,useState, useRef } from 'react';
+import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import './alumini.css';
@@ -33,9 +34,10 @@ const Alumini = () => {
             <Transparent />
             <NewsRoom />
             <MemberImages />
-           <Blogs />
-             <Gallery />
-            {/* <AluminiDetSeacrch /> */}
+            <Blogs />
+            <Gallery />
+            <AluminiDetSeacrch />
+            {/* <Procd /> */}
         </section>
     );
 };
@@ -275,6 +277,70 @@ const Gallery = () => {
                     </div>
                 ))}
             </motion.div>
+        </div>
+    );
+};
+
+
+const AluminiDetSeacrch = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [alumniData, setAlumniData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/general/alumni`);
+                setAlumniData(response.data);
+            } catch (error) {
+                console.error('Error fetching alumni data:', error);
+            }
+        };
+
+        fetchData();
+    }, []); // Fetch data only once when the component mounts
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    // Filter alumni data based on search term
+    const filteredAlumniData = alumniData.filter((alumni) =>
+        alumni.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    return (
+        <div>
+            <h1 className='nrm'>SEARCH ALUMNI</h1>
+            <input
+            className='sgninp'
+            style={{width:'20%',marginTop:"30px",marginBottom:"20px",alignSelf:"center"}}
+                type="text"
+                placeholder="Search alumni by name..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+            />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Year of Pass Out</th>
+                        <th>Phone Number</th>
+                        <th>Career</th>
+                        <th>Registration Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filteredAlumniData.map((alumni, index) => (
+                        <tr key={index}>
+                            <td>{alumni.name}</td>
+                            <td>{alumni.year_of_pass_out}</td>
+                            <td>{alumni.phno}</td>
+                            <td>{alumni.career}</td>
+                            <td>{alumni.regno}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };
