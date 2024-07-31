@@ -24,7 +24,7 @@ import Alumevent from "./components/alumnidash/alumevent";
 
 import { AuthProvider } from "./auth";
 
-export const SERVER_URL='http://localhost:3000';
+export const SERVER_URL='https://college-management-system-server.vercel.app';
 
 const App=()=>{ 
     // console.log(process.env.SERVER_URL +"HIII");
