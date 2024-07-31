@@ -70,6 +70,9 @@ app.get('/protect',auth,(req,res)=>{
   res.status(200).json({msg:'sucess'});
 });
 
+app.get('/',async(req,res)=>{
+  res.status(200).json({msg:'sucess'})
+})
 // for alumini route...
 app.get('/protectalumini',auth2,(req,res)=>{
   res.status(200).json({msg:'sucess'});
